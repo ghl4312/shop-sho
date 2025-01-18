@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تماس با ما</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/shoes-background.jpg'); /* پس زمینه تصویر کفش */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .contact-info {
+            background-color: rgba(0, 0, 255, 0.7); /* رنگ آبی کمرنگ */
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 70%;
+            max-width: 600px;
+        }
+        .contact-info h2 {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .contact-info p {
+            font-weight: bold;
+            font-size: 20px;
+            margin: 10px 0;
+            transition: color 1s ease; /* ایجاد انیمیشن برای تغییر رنگ */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-info">
+            <h2>مشخصات من</h2>
+            <p id="name">نام: حسن انصاریان </p>
+            <p id="email">ایمیل: g.h.l.ansaryan4312@gmail.com </p>
+            <p id="phone">شماره تماس: 09106338849</p>
+        </div>
+    </div>
+
+    <script>
+        const colors = ['green', 'blue', 'red', 'orange', 'purple', 'yellow'];
+
+        function changeColor() {
+            // گرفتن تمامی پاراگراف‌ها (مشخصات)
+            const elements = document.querySelectorAll('.contact-info p');
+            elements.forEach(element => {
+                // انتخاب رنگ تصادفی از آرایه رنگ‌ها
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                element.style.color = randomColor;
+            });
+        }
+
+        // تغییر رنگ هر 3 ثانیه یکبار
+        setInterval(changeColor, 300);
+    </script>
+</body>
+</html>

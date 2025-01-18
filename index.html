@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه کفش</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('images/shoes-background13.jpg'); /* آدرس تصویر پس‌زمینه */
+            background-size: cover; /* پوشش کامل پس‌زمینه در صفحه */
+            background-position: center; /* تنظیم تصویر به مرکز صفحه */
+            background-attachment: fixed; /* ثابت نگه داشتن پس‌زمینه هنگام اسکرول */
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        /* حالت hover برای لینک‌ها */
+        nav ul li a:hover {
+            background-color: #ff7f50; /* رنگ پس‌زمینه هنگام حرکت موس */
+            transform: translateY(-5px); /* برآمدگی جزئی */
+            border-radius: 5px; /* گوشه‌های گرد */
+        }
+        #home, #products, #about, #contact {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .product-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        #cart-section {
+            margin: 40px auto;
+            width: 80%;
+            text-align: center;
+        }
+        #cart-list {
+            list-style: none;
+            padding: 0;
+        }
+        #cart-list li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .remove-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .checkout-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .payment-form {
+            margin: 40px auto;
+            width: 60%;
+            text-align: center;
+            display: none;
+        }
+        .payment-form input, .payment-form button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+        /* استایل کادر آدرس */
+        .address-box {
+            background-color: rgba(0, 0, 255, 0.7); /* رنگ آبی */
+            padding: 30px;
+            border-radius: 10px;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            color: white;
+            display: none;
+            border: 2px solid black; /* اضافه کردن حاشیه مشکی */
+        }
+        .address-box p {
+            color: green;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 10px 0;
+            border: 2px solid black; /* اضافه کردن حاشیه مشکی به متن */
+            padding: 10px; /* فاصله از متن */
+            border-radius: 5px; /* گوشه‌های گرد برای حاشیه */
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>فروشگاه آنلاین کفش</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#products">محصولات</a></li>
+                    <li><a href="#about" onclick="showAddressBox()">درباره ما</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h2>خوش آمدید به بهترین فروشگاه کفش</h2>
+            <p>انواع کفش‌های مد روز را با بهترین قیمت‌ها بخرید.</p>
+            <a href="#products" class="btn">مشاهده محصولات</a>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2>محصولات ما</h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="images/1.jpg" alt="کفش 1">
+                    <h3>کفش ورزشی</h3>
+                    <p>قیمت: 500,000 تومان</p>
+                    <button onclick="addToCart('کفش ورزشی', 500000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product">
+                    <img src="images/2.jpg" alt="کفش 2">
+                    <h3>کفش رسمی</h3>
+                    <p>قیمت: 750,000 تومان</p>
+                    <button onclick="addToCart('کفش رسمی', 750000)">افزودن به سبد خرید</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cart-section">
+        <h2>سبد خرید</h2>
+        <ul id="cart-list"></ul>
+        <button class="checkout-btn" onclick="showPaymentForm()">پرداخت</button>
+    </section>
+
+    <section class="payment-form" id="payment-form">
+        <h2>جزئیات پرداخت</h2>
+        <form>
+            <input type="text" placeholder="نام و نام خانوادگی" required>
+            <input type="number" placeholder="شماره کارت" required>
+            <input type="text" placeholder="CVV2" required>
+            <button type="submit" onclick="completePayment(event)">پرداخت نهایی</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>تمامی حقوق محفوظ است &copy; 2024</p>
+        </div>
+    </footer>
+
+    <!-- کادر آدرس -->
+    <div id="address-box" class="address-box">
+        <button class="close-btn" onclick="closeAddressBox()">X</button>
+        <h2>آدرس</h2>
+        <p>شهر نیشابور - پشت آرامگاه بی بی شطیطه - خیابان شایسته - ابتدای خیابان سمت راس کفش فروشی عبیری</p>
+    </div>
+
+    <script>
+        let cart = [];
+
+        // اضافه کردن محصول به سبد خرید
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            displayCart();
+        }
+
+        // نمایش سبد خرید
+        function displayCart() {
+            const cartList = document.getElementById('cart-list');
+            cartList.innerHTML = '';
+            cart.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ${item.price.toLocaleString()} تومان`;
+                
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'حذف';
+                removeButton.className = 'remove-btn';
+                removeButton.onclick = () => removeFromCart(index);
+                listItem.appendChild(removeButton);
+                cartList.appendChild(listItem);
+            });
+        }
+
+        // حذف محصول از سبد خرید
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            displayCart();
+        }
+
+        // نمایش فرم پرداخت
+        function showPaymentForm() {
+            if (cart.length === 0) {
+                alert("سبد خرید شما خالی است.");
+                return;
+            }
+            document.getElementById('payment-form').style.display = 'block';
+        }
+
+        // تکمیل پرداخت
+        function completePayment(event) {
+            event.preventDefault();
+            alert("پرداخت با موفقیت انجام شد!");
+            cart = [];
+            displayCart();
+            document.getElementById('payment-form').style.display = 'none';
+        }
+
+        // نمایش کادر آدرس
+        function showAddressBox() {
+            document.getElementById('address-box').style.display = 'block';
+        }
+
+        // بستن کادر آدرس
+        function closeAddressBox() {
+            document.getElementById('address-box').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
